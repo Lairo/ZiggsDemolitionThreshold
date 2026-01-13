@@ -12,20 +12,44 @@ namespace ZiggsDemolitionThreshold
 
             Console.WriteLine("Ziggs Demolition Threshold\n");
 
-            Console.WriteLine($"Outer turret has {turrets[0]:00} health\n" +
-                $"Execute at {turrets[0]*levels[0]:00}/{turrets[0]*levels[1]:00}/" +
-                $"{turrets[0]*levels[2]:00}/{turrets[0]*levels[3]:00}/{turrets[0]*levels[4]:00}\n");
+            int x = 0;
+            string turretPosition = "";            
+            while (x < 4)
+            {
+                if (x == 0)
+                {
+                    turretPosition = "Outer";
+                }
+                if (x == 1)
+                {
+                    turretPosition = "Inner";
+                }
+                if (x == 2)
+                {
+                    turretPosition = "Inhib";
+                }
+                if (x == 3)
+                {
+                    turretPosition = "Nexus";
+                }
+                Console.Write($"{turretPosition} turret has {turrets[x]:00} health\nExecute at ");
 
-            Console.WriteLine($"Inner turret has {turrets[1]} health\n" +
-               $"Execute at {turrets[1]*levels[0]:00}/{turrets[1]*levels[1]:00}/" +
-               $"{turrets[1]*levels[2]:00}/{turrets[1]*levels[3]:00}/{turrets[1]*levels[4]:00}\n");
-            Console.WriteLine($"Inhib turret has {turrets[2]} health\n" +
-               $"Execute at {turrets[2]*levels[0]:00}/{turrets[2]*levels[1]:00}/" +
-               $"{turrets[2]*levels[2]:00}/{turrets[2]*levels[3]:00}/{turrets[2]*levels[4]:00}\n");
-            Console.WriteLine($"Nexus turret has {turrets[3]} health\n" +
-               $"Execute at {turrets[3]*levels[0]:00}/{turrets[3]*levels[1]:00}/" +
-               $"{turrets[3]*levels[2]:00}/{turrets[3]*levels[3]:00}/{turrets[3]*levels[4]:00}\n");
+                for (int i = 0; i < 5; i++) {
 
+                    Console.Write($"{turrets[x] * levels[i]:00}");
+                    if (i < 4)
+                    {
+                        Console.Write("/");
+                    }
+                }
+                Console.WriteLine("\n");
+
+                if (x == 4)
+                {
+                    return;
+                }
+                    x++;
+            }
             Console.ReadLine();
         }
     }
